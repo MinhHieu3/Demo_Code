@@ -59,6 +59,7 @@
                     <th scope="col">Creat Time</th>
                     <th scope="col">Like Count</th>
                     <th scope="col">Category</th>
+                    <th scope="col">User</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
@@ -70,6 +71,7 @@
                         <td>${blogs.createTime}</td>
                         <td>${blogs.likeCount}</td>
                         <td>${blogs.category}</td>
+                        <td>${blogs.user}</td>
                         <td>
                             <button type="button" class="btn btn-light"><a
                                     href="/blogs?action=edit&id=${blogs.id}">Sửa</a>

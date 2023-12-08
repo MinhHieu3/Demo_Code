@@ -9,14 +9,24 @@ public class Blog {
     private LocalTime createTime;
     private int likeCount;
     private String category;
+    private String user;
 
-    public Blog(int id, String content, String title, int likeCount, String category) {
+    public Blog(int id, String content, String title, int likeCount, String category,String user) {
         this.id = id;
         this.content = content;
         this.title = title;
         this.createTime = LocalTime.now();
         this.likeCount = likeCount;
         this.category = category;
+        this.user=user;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public int getId() {

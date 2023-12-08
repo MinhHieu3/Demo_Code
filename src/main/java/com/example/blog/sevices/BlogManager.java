@@ -7,12 +7,13 @@ import java.util.List;
 
 public class BlogManager implements IManager<Blog>{
     List<Blog>blogList=new ArrayList<>();
+    public  static  String username=null;
 
     public BlogManager() {
-        blogList.add(new Blog(1,"Content","title",10,"Gái Xinh"));
-        blogList.add(new Blog(2,"Bui Anh Duc","title",1,"Kiếm Hiệp"));
-        blogList.add(new Blog(3,"Dao Nhu Anh","title2",5,"Gái Xinh"));
-        blogList.add(new Blog(4,"Li Tieu Long","title",6,"Kiếm Hiệp"));
+        blogList.add(new Blog(1,"Content","title",10,"Gái Xinh",""));
+        blogList.add(new Blog(2,"Bui Anh Duc","title",1,"Kiếm Hiệp",""));
+        blogList.add(new Blog(3,"Dao Nhu Anh","title2",5,"Gái Xinh",""));
+        blogList.add(new Blog(4,"Li Tieu Long","title",6,"Kiếm Hiệp",""));
     }
 
     public List<Blog> getBlogList() {

@@ -19,6 +19,7 @@ import java.util.List;
 public class BlogServler extends HttpServlet {
     BlogManager blogManager = new BlogManager();
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
@@ -47,10 +48,18 @@ public class BlogServler extends HttpServlet {
             case "sortlike":
                 showSortLike(req, resp);
                 break;
+            case "createUser":
+                showFromCreateUser(req,resp);
+                break;
 
             default:
                 showListComputer(req, resp);
         }
+    }
+
+    private void showFromCreateUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/blog/createUser.jsp");
+        requestDispatcher.forward(req, resp);
     }
 
     private void showSortLike(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -134,6 +143,9 @@ public class BlogServler extends HttpServlet {
             case "create":
                 Create(req, resp);
                 break;
+            case "createUser":
+                Create2(req,resp);
+                break;
             case "edit":
                 Edit(req, resp);
                 break;
@@ -143,6 +155,17 @@ public class BlogServler extends HttpServlet {
 
 
         }
+    }
+
+    private void Create2(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String content = req.getParameter("content");
+        String title = req.getParameter("title");
+        int like = Integer.parseInt(req.getParameter("like"));
+        String category = req.getParameter("category");
+        String user=req.getParameter("user");
+        blogManager.add(new Blog(id, content, title, like, category,user));
+        resp.sendRedirect("/blogs");
     }
 
     private void Seach(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -164,7 +187,7 @@ public class BlogServler extends HttpServlet {
         String title = req.getParameter("title");
         int like = Integer.parseInt(req.getParameter("like"));
         String category = req.getParameter("category");
-        blogManager.edit(id, new Blog(id, content, title, like, category));
+        blogManager.edit(id, new Blog(id, content, title, like, category,""));
         resp.sendRedirect("/blogs");
     }
 
@@ -174,7 +197,9 @@ public class BlogServler extends HttpServlet {
         String title = req.getParameter("title");
         int like = Integer.parseInt(req.getParameter("like"));
         String category = req.getParameter("category");
-        blogManager.add(new Blog(id, content, title, like, category));
+        String user=req.getParameter("user");
+        blogManager.add(new Blog(id, content, title, like, category,user));
         resp.sendRedirect("/blogs");
     }
+
 }

@@ -72,10 +72,10 @@
         <div class="col-2">
             <div class="row">
                 <div class="col-12">
-                    <form class="form-inline my-2 my-lg-0" action="">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Tên User"
+                    <form class="col-12" method="post">
+                        <input type="text" placeholder="Tên User"
                                name="user">
-                        <button class="btn btn-outline-success mt -5 my-sm-0 " type="submit" >Gửi</button>
+                        <a href="/blogs?action=createUser" class="btn btn-primary" name="uesr">Liên Hệ</a>
                     </form>
                 </div>
             </div>
